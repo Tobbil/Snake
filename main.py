@@ -119,7 +119,7 @@ def game_loop():
         print(x1, y1)
         display.fill(white)
         pygame.draw.rect(display, blue, [x1, y1, snake_block, snake_block])
-        pygame.draw.rect(display, black, [
+        pygame.draw.rect(display, blue, [
                          food_x, food_y, snake_block, snake_block])
         snake_head = []
         snake_head.append(x1)
