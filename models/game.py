@@ -6,8 +6,9 @@ pygame.display.set_caption("Snake")
 
 class Game:
 
-    main_font = pygame.font.SysFont("bahnschrift", 30)
-    score_font = pygame.font.SysFont("calibri", 25)
+    speed = 20
+    is_over = False
+    end_screen = False
 
     def __init__(self):
         pass
