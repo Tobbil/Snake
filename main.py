@@ -1,4 +1,4 @@
-import random
+import sys
 
 import pygame
 
@@ -7,18 +7,20 @@ from models.game import Game
 from models.display import Display
 from models.food import Food
 
-display_width = 800
-display_height = 600
-display = Display(display_width, display_height)
+DISPLAY_WIDTH = 800
+DISPLAY_HEIGHT = 600
+display = Display(DISPLAY_WIDTH, DISPLAY_HEIGHT)
 
 
 def game_loop():
-
     food = Food()
-    snake = Snake(display_width, display_height)
+    snake = Snake(DISPLAY_WIDTH, DISPLAY_HEIGHT)
     game = Game()
     clock = pygame.time.Clock()
-    food.generate(display_width, display_height, snake.size)
+
+    difficulty = display.check_event_difficulty()
+    game.set_difficulty(difficulty)
+    food.generate(DISPLAY_WIDTH, DISPLAY_HEIGHT, snake.size)
 
     while not game.is_over:
         while game.end_screen:
@@ -30,9 +32,6 @@ def game_loop():
 
             if game.keep_playing():
                 game_loop()
-            else:
-                game.is_over = True
-                game.end_screen = False
 
         game.check_events_in_game(snake)
         snake.update_position(snake.x_pos_change, snake.y_pos_change)
@@ -42,25 +41,24 @@ def game_loop():
 
         display.screen.fill(display.white)
 
-        snake.render(display.screen, color=display.black)
-        food.render(display.screen, snake.size, color=display.blue)
-
         if snake.hit_self():
             game.end_screen = True
 
-        snake.update(display.screen, color=display.black)
+        food.render(display.screen, snake.size, color=display.blue)
+        snake.render(display.screen, color=display.black)
+
         display.score(snake.length-1)
 
         display.update()
 
         if food.hit(snake.x_pos, snake.y_pos):
-            food.generate(display_width, display_height, snake.size)
+            food.generate(DISPLAY_WIDTH, DISPLAY_HEIGHT, snake.size)
             snake.grow()
 
         clock.tick(game.speed)
 
     pygame.quit()
-    quit()
+    sys.exit()
 
 
 game_loop()

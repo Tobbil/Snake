@@ -43,6 +43,21 @@ class Game:
             if event.type == pygame.KEYDOWN:
                 match event.key:
                     case pygame.K_ESCAPE:
+                        self.is_over = True
+                        self.end_screen = False
                         return False
                     case pygame.K_RETURN:
                         return True
+
+    def set_difficulty(self, difficulty):
+        match difficulty:
+            case -1:
+                self.is_over = True
+            case 1:
+                self.speed = 20
+            case 2:
+                self.speed = 25
+            case 3:
+                self.speed = 35
+            case 4:
+                self.speed = 40

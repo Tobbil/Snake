@@ -35,14 +35,10 @@ class Snake:
 
         return False
 
-    def update(self, screen, color):
+    def render(self, screen, color):
         for x in self.snake_list:
             pygame.draw.rect(screen, color, [
                 x[0], x[1], self.size, self.size])
-
-    def render(self, screen, color):
-        pygame.draw.rect(screen, color,
-                         [self.x_pos, self.y_pos, self.size, self.size])
 
     def grow(self):
         self.length += 1
