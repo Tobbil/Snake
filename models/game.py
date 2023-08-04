@@ -9,7 +9,7 @@ class Game:
     def __init__(self):
         self.is_over = False
         self.end_screen = False
-        self.speed = 20
+        self.speed = None
 
     def check_events_in_game(self, snake):
         for event in pygame.event.get():
