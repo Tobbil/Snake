@@ -11,7 +11,36 @@ class Game:
         self.end_screen = False
         self.speed = None
 
-    def check_events_in_game(self, snake):
+    def check_event_difficulty(self, display):
+        display.screen.fill(display.white)
+        display.message("Choose difficulty: 1) Easy 2) Normal 3) Hard 4) Ultra Hard",
+                        display.black)
+        display.update()
+        choice = False
+        while choice is False:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    choice = True
+                    return -1
+                if event.type == pygame.KEYDOWN:
+                    match event.key:
+                        case pygame.QUIT:
+                            choice = True
+                            return -1
+                        case pygame.K_1:
+                            choice = True
+                            return 1
+                        case pygame.K_2:
+                            choice = True
+                            return 2
+                        case pygame.K_3:
+                            choice = True
+                            return 3
+                        case pygame.K_4:
+                            choice = True
+                            return 4
+
+    def check_event_in_game(self, snake):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.is_over = True

@@ -18,7 +18,7 @@ def game_loop():
     game = Game()
     clock = pygame.time.Clock()
 
-    difficulty = display.check_event_difficulty()
+    difficulty = game.check_event_difficulty(display)
     game.set_difficulty(difficulty)
     food.generate(DISPLAY_WIDTH, DISPLAY_HEIGHT, snake.size)
 
@@ -33,7 +33,7 @@ def game_loop():
             if game.keep_playing():
                 game_loop()
 
-        game.check_events_in_game(snake)
+        game.check_event_in_game(snake)
         snake.update_position(snake.x_pos_change, snake.y_pos_change)
 
         if display.border_hit(snake.x_pos, snake.y_pos):
