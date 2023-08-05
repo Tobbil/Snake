@@ -25,8 +25,7 @@ def game_loop():
     while not game.is_over:
         while game.end_screen:
             display.screen.fill(display.white)
-            display.message(
-                "Game over! Press Escape to quit or Enter to play again.", display.red)
+            display.game_over()
             display.score(snake.length-1)
             display.update()
 
