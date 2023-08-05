@@ -12,7 +12,7 @@ DISPLAY_HEIGHT = 600
 display = Display(DISPLAY_WIDTH, DISPLAY_HEIGHT)
 
 
-def game_loop():
+def game_on():
     food = Food()
     snake = Snake(DISPLAY_WIDTH, DISPLAY_HEIGHT)
     game = Game()
@@ -30,12 +30,12 @@ def game_loop():
             display.update()
 
             if game.keep_playing():
-                game_loop()
+                game_on()
 
         game.check_event_in_game(snake)
-        snake.update_position(snake.x_pos_change, snake.y_pos_change)
+        snake.update_position()
 
-        if display.border_hit(snake.x_pos, snake.y_pos):
+        if snake.hit_border():
             game.end_screen = True
 
         display.screen.fill(display.white)
@@ -60,4 +60,4 @@ def game_loop():
     sys.exit()
 
 
-game_loop()
+game_on()

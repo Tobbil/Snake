@@ -33,10 +33,6 @@ class Display:
         self.message(
             "Game over! Press Escape to quit or Enter to play again.", self.red)
 
-    def border_hit(self, x_pos, y_pos):
-        if any((x_pos >= self.display_width, x_pos < 0, y_pos >= self.display_height, y_pos < 0)):
-            return True
-
     def draw_rect(self, color, x_pos, y_pos, x_size, y_size):
         pygame.draw.rect(self.screen, color, [x_pos, y_pos, x_size, y_size])
 

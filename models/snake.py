@@ -16,9 +16,9 @@ class Snake:
         self.y_pos_change = 0
         self.snake_head = []
 
-    def update_position(self, x_change, y_change):
-        self.x_pos += x_change
-        self.y_pos += y_change
+    def update_position(self):
+        self.x_pos += self.x_pos_change
+        self.y_pos += self.y_pos_change
 
     def hit_self(self):
         self.snake_head = []
@@ -34,6 +34,10 @@ class Snake:
                 return True
 
         return False
+
+    def hit_border(self):
+        if any((self.x_pos >= self.display_width, self.x_pos < 0, self.y_pos >= self.display_height, self.y_pos < 0)):
+            return True
 
     def render(self, screen, color):
         for x in self.snake_list:
