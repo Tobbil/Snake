@@ -1,4 +1,4 @@
-Simple Snake game made just for fun.
+Simple Snake game.
 
 How to run:
 
