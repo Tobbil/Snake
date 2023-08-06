@@ -24,7 +24,7 @@ class Game:
                     return -1
                 if event.type == pygame.KEYDOWN:
                     match event.key:
-                        case pygame.QUIT:
+                        case pygame.K_0:
                             choice = True
                             return -1
                         case pygame.K_1:
