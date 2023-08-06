@@ -18,6 +18,3 @@ class Food:
     def render(self, screen, snake_size, color):
         pygame.draw.rect(
             screen, color, [self.x_pos, self.y_pos, snake_size, snake_size])
-
-    def hit(self, snake_x_pos, snake_y_pos):
-        return (snake_x_pos == self.x_pos and snake_y_pos == self.y_pos)

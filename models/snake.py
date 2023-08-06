@@ -39,6 +39,9 @@ class Snake:
         if any((self.x_pos >= self.display_width, self.x_pos < 0, self.y_pos >= self.display_height, self.y_pos < 0)):
             return True
 
+    def hit_food(self, food_x_pos, food_y_pos):
+        return (self.x_pos == food_x_pos and self.y_pos == food_y_pos)
+
     def render(self, screen, color):
         for x in self.snake_list:
             pygame.draw.rect(screen, color, [

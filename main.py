@@ -50,7 +50,7 @@ def game_on():
 
         display.update()
 
-        if food.hit(snake.x_pos, snake.y_pos):
+        if snake.hit_food(food.x_pos, food.y_pos):
             food.generate(DISPLAY_WIDTH, DISPLAY_HEIGHT, snake.size)
             snake.grow()
 
